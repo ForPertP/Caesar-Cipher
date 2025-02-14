@@ -2,7 +2,8 @@
 
 using namespace std;
 
-
+string ltrim(const string &);
+string rtrim(const string &);
 
 /*
  * Complete the 'caesarCipher' function below.
@@ -30,12 +31,28 @@ string caesarCipher(string s, int k)
 }
 
 
-int main() {
-    int n, k;
-    string s;
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
 
-    cin >> n >> s >> k;
-    cout << caesarCipher(s, k) << endl;
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string s;
+    getline(cin, s);
+
+    string k_temp;
+    getline(cin, k_temp);
+
+    int k = stoi(ltrim(rtrim(k_temp)));
+
+    string result = caesarCipher(s, k);
+
+    fout << result << "\n";
+
+    fout.close();
 
     return 0;
 }
