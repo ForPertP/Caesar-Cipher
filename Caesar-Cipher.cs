@@ -26,6 +26,19 @@ class Result
 
     public static string caesarCipher(string s, int k)
     {
+        k %= 26;
+        char[] result = s.ToCharArray();
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            if (char.IsLetter(result[i]))
+            {
+                char baseChar = char.IsLower(result[i]) ? 'a' : 'A';
+                result[i] = (char)((result[i] - baseChar + k) % 26 + baseChar);
+            }
+        }
+
+        return new string(result);
     }
 }
 
