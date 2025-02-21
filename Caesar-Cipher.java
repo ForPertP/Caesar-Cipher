@@ -22,6 +22,17 @@ class Result {
      */
 
     public static String caesarCipher(String s, int k) {
+        k %= 26;
+        char[] result = s.toCharArray();
+
+        for (int i = 0; i < result.length; i++) {
+            if (Character.isLetter(result[i])) {
+                char base = Character.isLowerCase(result[i]) ? 'a' : 'A';
+                result[i] = (char) ((result[i] - base + k) % 26 + base);
+            }
+        }
+
+        return new String(result);
     }
 
 }
